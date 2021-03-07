@@ -1,6 +1,17 @@
 var canvasElement = document.querySelector("#scene");
 var context = canvasElement.getContext("2d");
 
+var object1 = []
+document.querySelector("#read-button").addEventListener('click', function() {
+    let file = document.querySelector("#file-input").files[0];
+    let reader = new FileReader();
+    reader.addEventListener('load', function(e) {
+            let text = e.target.result;
+            document.querySelector("#file-contents").textContent = text;
+    });
+    reader.readAsText(file);
+});
+
 function draw(x1, y1, z1, x2, y2, z2, x3, y3, z3, r, g, b, x, y)
 {
     context.beginPath();
