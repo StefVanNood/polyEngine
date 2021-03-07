@@ -7,8 +7,15 @@
     </head>
     <body>
         <input type="file" id="file-input" />
-        <button id="read-button">Read File</button>
-        <pre id="file-contents"></pre>
+        <br><button id="read-button">Read File</button>
+
+        <br><input type="checkbox" id="wireframe" name="renderWay">
+        <label for="wireframe">Wire Frame view</label>
+        <br><input type="checkbox" id="solid" name="renderWay">
+        <label for="solid">Solid view</label>
+
+        <br><button id="read-button" onclick="compile()">Build</button>
+
         <canvas id="scene" class="game" width="500" height="500"></canvas>
         <script src="render.js"></script>
     </body>
