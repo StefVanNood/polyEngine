@@ -1,0 +1,13 @@
+body {
+    background-color: rgb(223, 223, 223);
+}
+.game {
+    background-color: white;
+    position: relative;
+    left: 25%;
+}
+.material {
+    background-color: gray;
+    width: 200px;
+    height: 60px;
+}
