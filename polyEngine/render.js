@@ -3,7 +3,7 @@ var context = canvasElement.getContext("2d");
 
 var row = ""
 var object1 = []
-document.querySelector("#read-button").addEventListener('click', function() {
+function readFile(){
     let file = document.querySelector("#file-input").files[0];
     let reader = new FileReader();
     reader.addEventListener('load', function(e) {
@@ -13,10 +13,11 @@ document.querySelector("#read-button").addEventListener('click', function() {
             object1.push(row)
     });
     reader.readAsText(file);
-});
+};
 
 function compile()
 {   
+    context.clearRect(0, 0, canvasElement.width, canvasElement.height);
     if (row != "") {
         for (x = 1; x <= object1[0].length / 9; x++)
             draw(object1[0][0 + (9 * (x - 1))], 
