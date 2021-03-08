@@ -29,18 +29,22 @@ colorInput.addEventListener('input', () => {
 document.addEventListener('keydown', function(event) {
     if (event.keyCode == 37) {
         XCamera = XCamera - speed
+        console.log(XCamera)
         build()
     }
     if (event.keyCode == 39) {
         XCamera = XCamera + speed
+        console.log(XCamera)
         build()
     }
     if (event.keyCode == 38) {
         YCamera = YCamera - speed
+        console.log(YCamera)
         build()
     }
     if (event.keyCode == 40) {
         YCamera = YCamera + speed
+        console.log(YCamera)
         build()
     }
 })
@@ -54,16 +58,87 @@ function compile(rgb, xPos, yPos)
 {
     context.clearRect(0, 0, canvasElement.width, canvasElement.height);
     if (row != "") {
-        for (x = 1; x <= object1[0].length / 11; x++)
-            draw(object1[0][0 + (11 * (x - 1))], 
-                object1[0][1 + (11 * (x - 1))], 
-                object1[0][2 + (11 * (x - 1))], 
-                object1[0][3 + (11 * (x - 1))], 
-                object1[0][4 + (11 * (x - 1))], 
-                object1[0][5 + (11 * (x - 1))], 
-                object1[0][6 + (11 * (x - 1))], 
-                object1[0][7 + (11 * (x - 1))], 
-                object1[0][8 + (11 * (x - 1))], rgb, xPos, yPos)
+        for (x = 1; x <= object1[0].length / 11; x++){
+            console.log(rgb)
+            if (document.getElementById("light").checked) {
+                if (object1[0][9 + (11 * (x - 1))] == 2){
+                    rgb = "#000000"
+                    console.log(rgb)
+                } else if (object1[0][9 + (11 * (x - 1))] == 3){
+                    rgb = "#000000"
+                    console.log(rgb)
+                } else {
+                    rgb = hexColor
+                }
+            }
+            if (document.getElementById("speedrender").checked) {
+                if (object1[0][9 + (11 * (x - 1))] == 5 && YCamera >= 35){
+                    draw(object1[0][0 + (11 * (x - 1))], 
+                        object1[0][1 + (11 * (x - 1))], 
+                        object1[0][2 + (11 * (x - 1))], 
+                        object1[0][3 + (11 * (x - 1))], 
+                        object1[0][4 + (11 * (x - 1))], 
+                        object1[0][5 + (11 * (x - 1))], 
+                        object1[0][6 + (11 * (x - 1))], 
+                        object1[0][7 + (11 * (x - 1))], 
+                        object1[0][8 + (11 * (x - 1))], rgb, xPos, yPos)
+                }
+                if (object1[0][9 + (11 * (x - 1))] == 3 && YCamera <= -35){
+                    draw(object1[0][0 + (11 * (x - 1))], 
+                        object1[0][1 + (11 * (x - 1))], 
+                        object1[0][2 + (11 * (x - 1))], 
+                        object1[0][3 + (11 * (x - 1))], 
+                        object1[0][4 + (11 * (x - 1))], 
+                        object1[0][5 + (11 * (x - 1))], 
+                        object1[0][6 + (11 * (x - 1))], 
+                        object1[0][7 + (11 * (x - 1))], 
+                        object1[0][8 + (11 * (x - 1))], rgb, xPos, yPos)
+                }
+                if (object1[0][9 + (11 * (x - 1))] == 4 && XCamera <= -35){
+                    draw(object1[0][0 + (11 * (x - 1))], 
+                        object1[0][1 + (11 * (x - 1))], 
+                        object1[0][2 + (11 * (x - 1))], 
+                        object1[0][3 + (11 * (x - 1))], 
+                        object1[0][4 + (11 * (x - 1))], 
+                        object1[0][5 + (11 * (x - 1))], 
+                        object1[0][6 + (11 * (x - 1))], 
+                        object1[0][7 + (11 * (x - 1))], 
+                        object1[0][8 + (11 * (x - 1))], rgb, xPos, yPos)
+                }
+                if (object1[0][9 + (11 * (x - 1))] == 2 && XCamera >= 35){
+                    draw(object1[0][0 + (11 * (x - 1))], 
+                        object1[0][1 + (11 * (x - 1))], 
+                        object1[0][2 + (11 * (x - 1))], 
+                        object1[0][3 + (11 * (x - 1))], 
+                        object1[0][4 + (11 * (x - 1))], 
+                        object1[0][5 + (11 * (x - 1))], 
+                        object1[0][6 + (11 * (x - 1))], 
+                        object1[0][7 + (11 * (x - 1))], 
+                        object1[0][8 + (11 * (x - 1))], rgb, xPos, yPos)
+                }
+                if (object1[0][9 + (11 * (x - 1))] == 1){
+                    draw(object1[0][0 + (11 * (x - 1))], 
+                        object1[0][1 + (11 * (x - 1))], 
+                        object1[0][2 + (11 * (x - 1))], 
+                        object1[0][3 + (11 * (x - 1))], 
+                        object1[0][4 + (11 * (x - 1))], 
+                        object1[0][5 + (11 * (x - 1))], 
+                        object1[0][6 + (11 * (x - 1))], 
+                        object1[0][7 + (11 * (x - 1))], 
+                        object1[0][8 + (11 * (x - 1))], rgb, xPos, yPos)
+                }
+            } else {
+                draw(object1[0][0 + (11 * (x - 1))], 
+                    object1[0][1 + (11 * (x - 1))], 
+                    object1[0][2 + (11 * (x - 1))], 
+                    object1[0][3 + (11 * (x - 1))], 
+                    object1[0][4 + (11 * (x - 1))], 
+                    object1[0][5 + (11 * (x - 1))], 
+                    object1[0][6 + (11 * (x - 1))], 
+                    object1[0][7 + (11 * (x - 1))], 
+                    object1[0][8 + (11 * (x - 1))], rgb, xPos, yPos)
+            }
+        }
     }
 }
 
