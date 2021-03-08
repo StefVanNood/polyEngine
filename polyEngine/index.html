@@ -6,25 +6,25 @@
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <input type="file" id="file-input" onchange="readFile()"/>
-
-        <br><br><input type="checkbox" id="wireframe" name="renderWay" onchange="build()">
-        <label for="wireframe">Wire Frame view</label>
-        <br><input type="checkbox" id="solid" name="renderWay" checked="true" onchange="build()">
-        <label for="solid">Solid view</label>
-        <br><input type="checkbox" id="light" name="renderWay" checked="true" onchange="build()">
-        <label for="light">licht</label>
-        <br><input type="checkbox" id="speedrender" name="renderWay" checked="true" onchange="build()">
-        <label for="speedrender">fast render</label>
-        
-        <br><br>
-        <div id="material" class="material">
-            material:
-            <br>
-            color: <input type="color" id="color"><div id="hex">hex: #000000</div>
+        <div class="topBar">
+            <input type="file" id="file-input" onchange="readFile()" class="text" class="topBarPos"/>
+            <button id="buildButton" onclick="build()" class="buildButton">Build</button>
         </div>
 
-        <br><button id="buildButton" onclick="build()">Build</button>
+        <br><input type="checkbox" id="wireframe" name="renderWay" onchange="build()">
+        <label for="wireframe" class="text">Wire Frame view</label>
+        <br><input type="checkbox" id="solid" name="renderWay" checked="true" onchange="build()">
+        <label for="solid" class="text">Solid view</label>
+        <br><input type="checkbox" id="light" name="renderWay" checked="true" onchange="build()">
+        <label for="light" class="text">licht</label>
+        <br><input type="checkbox" id="speedrender" name="renderWay" checked="true" onchange="build()">
+        <label for="speedrender" class="text">fast render</label>
+        
+        <br><br>
+        <div id="material" class="widget" class="text">
+            <div class="text">material:</div>
+            <div class="text">color:</div> <input type="color" id="color"><div id="hex" class="text">hex: #000000</div>
+        </div>
 
         <br><canvas id="scene" class="game" width="700" height="500"></canvas>
         <script src="render.js"></script>
