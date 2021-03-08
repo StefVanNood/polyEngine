@@ -7,10 +7,15 @@ body {
     left: 25%;
     top: -200px;
 }
-.widget {
+.widget1 {
     background-color: rgb(112, 112, 112);
     width: 200px;
-    height: 80px;
+    height: 60px;
+}
+.widget2 {
+    background-color: rgb(112, 112, 112);
+    width: 200px;
+    height: 65px;
 }
 .topBar {
     background-color: rgb(112, 112, 112);

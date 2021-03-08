@@ -21,9 +21,15 @@
         <label for="speedrender" class="text">fast render</label>
         
         <br><br>
-        <div id="material" class="widget" class="text">
+        <div id="material" class="widget1" class="text">
             <div class="text">material:</div>
-            <div class="text">color:</div> <input type="color" id="color"><div id="hex" class="text">hex: #000000</div>
+            <div class="text">color:<input type="color" id="color"><div id="hex" class="text">hex: #000000</div></div>
+        </div>
+        <br>
+        <div id="material" class="widget2" class="text">
+            <div class="text">position:</div>
+            <div class="text">X:<input type="text" id="xPos" onchange="build()"></div>
+            <div class="text">Y:<input type="text" id="yPos" onchange="build()"></div>
         </div>
 
         <br><canvas id="scene" class="game" width="700" height="500"></canvas>

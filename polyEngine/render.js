@@ -56,8 +56,20 @@ function build(){
     } else {
         light.style.marginLeft = (80 + -30) + "px";
     }
+    xPos1 = document.getElementById("xPos")
+    yPos1 = document.getElementById("yPos")
+    if (xPos1.value == "") {
+        x = 1
+    } else {
+        x = Number(xPos1.value)
+    }
+    if (yPos1.value == "") {
+        y = 100
+    } else {
+        y = Number(xPos1.value)
+    }
     hexColor = colorInput.value
-    compile(hexColor, 1, 1)
+    compile(hexColor, x, y)
 }
 
 function compile(rgb, xPos, yPos)
@@ -171,9 +183,9 @@ function draw(x1, y1, z1, x2, y2, z2, x3, y3, z3, rgb, x, y)
     }
 
     context.beginPath();
-    context.moveTo(parseInt(x1) + ((x + XCamera) / z1), parseInt(y1) + ((y + YCamera) / z1));
-    context.lineTo(parseInt(x2) + ((x + XCamera) / z2), parseInt(y2) + ((y + YCamera) / z2));
-    context.lineTo(parseInt(x3) + ((x + XCamera) / z3), parseInt(y3) + ((y + YCamera) / z3));
+    context.moveTo((parseInt(x1) + ((XCamera) / z1) + x), (parseInt(y1) + ((YCamera) / z1) + y));
+    context.lineTo((parseInt(x2) + ((XCamera) / z2) + x), (parseInt(y2) + ((YCamera) / z2) + y));
+    context.lineTo((parseInt(x3) + ((XCamera) / z3) + x), (parseInt(y3) + ((YCamera) / z3) + y));
     context.closePath();
 
     if (document.getElementById("wireframe").checked)
