@@ -28,3 +28,9 @@ body {
     position: relative;
     left: 30%;
 }
+.lightBulb {
+    max-width: 10%;
+    position: relative;
+    top: -70%;
+    left: 200px;
+}

@@ -27,30 +27,35 @@ colorInput.addEventListener('input', () => {
     build()
 })
 
-document.addEventListener('keydown', function(event) {
+document.onkeydown = move;
+function move(event) {
+    event = event || window.event;
     if (event.keyCode == 37) {
         XCamera = XCamera - speed
         console.log(XCamera)
         build()
-    }
-    if (event.keyCode == 39) {
+    } else if (event.keyCode == 39) {
         XCamera = XCamera + speed
         console.log(XCamera)
         build()
-    }
-    if (event.keyCode == 38) {
+    } else if (event.keyCode == 38) {
         YCamera = YCamera - speed
         console.log(YCamera)
         build()
-    }
-    if (event.keyCode == 40) {
+    } else if (event.keyCode == 40) {
         YCamera = YCamera + speed
         console.log(YCamera)
         build()
     }
-})
+}
 
 function build(){
+    var light = document.getElementById("lightBulb");
+    if (XCamera < -30) {
+        light.style.marginLeft = (80 + XCamera) + "px";
+    } else {
+        light.style.marginLeft = (80 + -30) + "px";
+    }
     hexColor = colorInput.value
     compile(hexColor, 1, 1)
 }
@@ -60,17 +65,13 @@ function compile(rgb, xPos, yPos)
     context.clearRect(0, 0, canvasElement.width, canvasElement.height);
     if (row != "") {
         for (x = 1; x <= object1[0].length / 11; x++){
-            console.log(rgb)
             if (document.getElementById("light").checked) {
                 if (object1[0][9 + (11 * (x - 1))] == 2){
                     rgb = "#000000"
-                    console.log(rgb)
                 } else if (object1[0][9 + (11 * (x - 1))] == 3){
                     rgb = "#000000"
-                    console.log(rgb)
                 } else if (object1[0][9 + (11 * (x - 1))] == 6){
                     rgb = "#000000"
-                    console.log(rgb)
                 } else {
                     rgb = hexColor
                 }
