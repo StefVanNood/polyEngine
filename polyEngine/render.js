@@ -3,6 +3,7 @@ var context = canvasElement.getContext("2d");
 var colorInput = document.querySelector("#color")
 var XCamera = 0
 var YCamera = 0
+var RotationCamera = 0
 var speed = 5
 
 var row = ""
@@ -67,6 +68,9 @@ function compile(rgb, xPos, yPos)
                 } else if (object1[0][9 + (11 * (x - 1))] == 3){
                     rgb = "#000000"
                     console.log(rgb)
+                } else if (object1[0][9 + (11 * (x - 1))] == 6){
+                    rgb = "#000000"
+                    console.log(rgb)
                 } else {
                     rgb = hexColor
                 }
@@ -117,6 +121,17 @@ function compile(rgb, xPos, yPos)
                         object1[0][8 + (11 * (x - 1))], rgb, xPos, yPos)
                 }
                 if (object1[0][9 + (11 * (x - 1))] == 1){
+                    draw(object1[0][0 + (11 * (x - 1))], 
+                        object1[0][1 + (11 * (x - 1))], 
+                        object1[0][2 + (11 * (x - 1))], 
+                        object1[0][3 + (11 * (x - 1))], 
+                        object1[0][4 + (11 * (x - 1))], 
+                        object1[0][5 + (11 * (x - 1))], 
+                        object1[0][6 + (11 * (x - 1))], 
+                        object1[0][7 + (11 * (x - 1))], 
+                        object1[0][8 + (11 * (x - 1))], rgb, xPos, yPos)
+                }
+                if (object1[0][9 + (11 * (x - 1))] == 6 && RotationCamera >= 35){
                     draw(object1[0][0 + (11 * (x - 1))], 
                         object1[0][1 + (11 * (x - 1))], 
                         object1[0][2 + (11 * (x - 1))], 
