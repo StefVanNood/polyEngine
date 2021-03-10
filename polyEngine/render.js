@@ -59,14 +59,14 @@ function build(){
     xPos1 = document.getElementById("xPos")
     yPos1 = document.getElementById("yPos")
     if (xPos1.value == "") {
-        x = 1
+        x = 150
     } else {
         x = Number(xPos1.value)
     }
     if (yPos1.value == "") {
-        y = 100
+        y = 60
     } else {
-        y = Number(xPos1.value)
+        y = Number(yPos1.value)
     }
     hexColor = colorInput.value
     compile(hexColor, x, y)
