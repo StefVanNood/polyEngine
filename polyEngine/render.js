@@ -58,7 +58,7 @@ function moveUp() {
             YCamera = YCamera - (vel / 100)
             build()
             start++
-        }, 10);
+        }, 1);
     }
     vel += 1
 }
@@ -68,7 +68,7 @@ function moveDown() {
             YCamera = YCamera + (vel / 100)
             build()
             start++
-        }, 10);
+        }, 1);
     }
     vel += 1
 }
@@ -78,7 +78,7 @@ function moveRight() {
             XCamera = XCamera + (vel / 100)
             build()
             start++
-        }, 10);
+        }, 1);
     }
     vel += 1
 }
@@ -88,7 +88,7 @@ function moveLeft() {
             XCamera = XCamera - (vel / 100)
             build()
             start++
-        }, 10);
+        }, 1);
     }
     vel += 1
 }
