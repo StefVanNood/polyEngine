@@ -13,6 +13,8 @@ function readFile(){
     let reader = new FileReader();
     reader.addEventListener('load', function(e) {
             let text = e.target.result;
+            output = document.querySelector("#liveOutput")
+            output.innerHTML = text
             row = text
             row = row.split(" ")
             object1 = []
@@ -110,6 +112,10 @@ function build(){
     for (x = 1; x <= object1[0].length / 13; x++){
         object1[0][11 + (13 * (x - 1))] = 60
     }
+    xOutput = document.querySelector("#xOutput")
+    yOutput = document.querySelector("#yOutput")
+    xOutput.innerHTML = Math.round(XCamera)
+    yOutput.innerHTML = Math.round(YCamera)
     hexColor = colorInput.value
     compile(hexColor)
 }

@@ -10,12 +10,14 @@ body {
 .widget1 {
     background-color: rgb(112, 112, 112);
     width: 200px;
-    height: 60px;
 }
 .widget2 {
     background-color: rgb(112, 112, 112);
     width: 200px;
-    height: 65px;
+}
+.widget3 {
+    background-color: rgb(112, 112, 112);
+    width: 200px;
 }
 .topBar {
     background-color: rgb(112, 112, 112);
