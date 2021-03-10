@@ -16,11 +16,12 @@ function readFile(){
             filesOut = document.querySelector("#liveOutput")
             filesOut.innerHTML = "file name: " + file.name + 
                                 "<br />file size: " + file.size + " bytes" + 
-                                "<br />file type: " + file.type
+                                "<br />file type: " + file.type +
+                                "<br />" + filesOut.innerHTML
             row = text
             row = row.split(" ")
-            object1 = []
             object1.push(row)
+            console.log(object1)
     });
     reader.readAsText(file);
 };
@@ -36,15 +37,19 @@ function move(event) {
     event = event || window.event;
     switch(event.keyCode){
         case 37:
+            moving = true
             moveLeft()
         break;
         case 39:
+            moving = true
             moveRight()
         break;
         case 38:
+            moving = true
             moveUp()
         break;
         case 40:
+            moving = true
             moveDown()
         break;
     }
@@ -52,47 +57,56 @@ function move(event) {
 document.onkeyup = stopMove;
 function stopMove(event) {
     vel = 1
+    moving = false
 }
 
 function moveUp() {
-    for(var start = 1; start < 100; start++) {
-        setTimeout(function () {
-            YCamera = YCamera - (vel / 100)
-            build()
-            start++
-        }, 1);
+    if (moving == true) {
+        for(var start = 1; start < 100; start++) {
+            setTimeout(function () {
+                YCamera = YCamera - (vel / 100)
+                build()
+                start++
+            }, 1);
+        }
+        vel += 1
     }
-    vel += 1
 }
 function moveDown() {
-    for(var start = 1; start < 100; start++) {
-        setTimeout(function () {
-            YCamera = YCamera + (vel / 100)
-            build()
-            start++
-        }, 1);
+    if (moving == true) {
+        for(var start = 1; start < 100; start++) {
+            setTimeout(function () {
+                YCamera = YCamera + (vel / 100)
+                build()
+                start++
+            }, 1);
+        }
+        vel += 1
     }
-    vel += 1
 }
 function moveRight() {
-    for(var start = 1; start < 100; start++) {
-        setTimeout(function () {
-            XCamera = XCamera + (vel / 100)
-            build()
-            start++
-        }, 1);
+    if (moving == true) {
+        for(var start = 1; start < 100; start++) {
+            setTimeout(function () {
+                XCamera = XCamera + (vel / 100)
+                build()
+                start++
+            }, 1);
+        }
+        vel += 1
     }
-    vel += 1
 }
 function moveLeft() {
-    for(var start = 1; start < 100; start++) {
-        setTimeout(function () {
-            XCamera = XCamera - (vel / 100)
-            build()
-            start++
-        }, 1);
+    if (moving == true) {
+        for(var start = 1; start < 100; start++) {
+            setTimeout(function () {
+                XCamera = XCamera - (vel / 100)
+                build()
+                start++
+            }, 1);
+        }
+        vel += 1
     }
-    vel += 1
 }
 
 function resetPos() {
@@ -108,11 +122,13 @@ function resetPos() {
 }
 
 function build(){
-    for (x = 1; x <= object1[0].length / 13; x++){
-        object1[0][10 + (13 * (x - 1))] = 150
-    }
-    for (x = 1; x <= object1[0].length / 13; x++){
-        object1[0][11 + (13 * (x - 1))] = 60
+    for (element = 0; element < object1.length; element++) {
+        for (x = 1; x <= object1[element].length / 13; x++){
+            object1[element][10 + (13 * (x - 1))] = 150
+        }
+        for (x = 1; x <= object1[element].length / 13; x++){
+            object1[element][11 + (13 * (x - 1))] = 60
+        }
     }
     xOutput = document.querySelector("#xOutput")
     yOutput = document.querySelector("#yOutput")
@@ -126,116 +142,118 @@ function compile(rgb)
 {
     context.clearRect(0, 0, canvasElement.width, canvasElement.height);
     if (row != "") {
-        for (x = 1; x <= object1[0].length / 13; x++){
-            if (document.getElementById("light").checked) {
-                if (object1[0][9 + (13 * (x - 1))] == 2){
-                    rgb = "#000000"
-                } else if (object1[0][9 + (13 * (x - 1))] == 3){
-                    rgb = "#000000"
-                } else if (object1[0][9 + (13 * (x - 1))] == 6){
-                    rgb = "#000000"
+        for (element = 0; element < object1.length; element++) {
+            for (x = 1; x <= object1[element].length / 13; x++) {
+                if (document.getElementById("light").checked) {
+                    if (object1[element][9 + (13 * (x - 1))] == 2){
+                        rgb = "#000000"
+                    } else if (object1[element][9 + (13 * (x - 1))] == 3){
+                        rgb = "#000000"
+                    } else if (object1[element][9 + (13 * (x - 1))] == 6){
+                        rgb = "#000000"
+                    } else {
+                        rgb = hexColor
+                    }
+                }
+                if (document.getElementById("speedrender").checked) {
+                    if (object1[element][9 + (13 * (x - 1))] == 5 && YCamera >= 35){
+                        draw(object1[element][0 + (13 * (x - 1))], 
+                            object1[element][1 + (13 * (x - 1))], 
+                            object1[element][2 + (13 * (x - 1))], 
+                            object1[element][3 + (13 * (x - 1))], 
+                            object1[element][4 + (13 * (x - 1))], 
+                            object1[element][5 + (13 * (x - 1))], 
+                            object1[element][6 + (13 * (x - 1))], 
+                            object1[element][7 + (13 * (x - 1))], 
+                            object1[element][8 + (13 * (x - 1))], 
+                            rgb, 
+                            object1[element][10 + (13 * (x - 1))], 
+                            object1[element][11 + (13 * (x - 1))])
+                    }
+                    if (object1[element][9 + (13 * (x - 1))] == 3 && YCamera <= -35){
+                        draw(object1[element][0 + (13 * (x - 1))], 
+                            object1[element][1 + (13 * (x - 1))], 
+                            object1[element][2 + (13 * (x - 1))], 
+                            object1[element][3 + (13 * (x - 1))], 
+                            object1[element][4 + (13 * (x - 1))], 
+                            object1[element][5 + (13 * (x - 1))], 
+                            object1[element][6 + (13 * (x - 1))], 
+                            object1[element][7 + (13 * (x - 1))], 
+                            object1[element][8 + (13 * (x - 1))], 
+                            rgb, 
+                            object1[element][10 + (13 * (x - 1))], 
+                            object1[element][11 + (13 * (x - 1))])
+                    }
+                    if (object1[element][9 + (13 * (x - 1))] == 4 && XCamera <= -35){
+                        draw(object1[element][0 + (13 * (x - 1))], 
+                            object1[element][1 + (13 * (x - 1))], 
+                            object1[element][2 + (13 * (x - 1))], 
+                            object1[element][3 + (13 * (x - 1))], 
+                            object1[element][4 + (13 * (x - 1))], 
+                            object1[element][5 + (13 * (x - 1))], 
+                            object1[element][6 + (13 * (x - 1))], 
+                            object1[element][7 + (13 * (x - 1))], 
+                            object1[element][8 + (13 * (x - 1))], 
+                            rgb, 
+                            object1[element][10 + (13 * (x - 1))], 
+                            object1[element][11 + (13 * (x - 1))])
+                    }
+                    if (object1[element][9 + (13 * (x - 1))] == 2 && XCamera >= 35){
+                        draw(object1[element][0 + (13 * (x - 1))], 
+                            object1[element][1 + (13 * (x - 1))], 
+                            object1[element][2 + (13 * (x - 1))], 
+                            object1[element][3 + (13 * (x - 1))], 
+                            object1[element][4 + (13 * (x - 1))], 
+                            object1[element][5 + (13 * (x - 1))], 
+                            object1[element][6 + (13 * (x - 1))], 
+                            object1[element][7 + (13 * (x - 1))], 
+                            object1[element][8 + (13 * (x - 1))], 
+                            rgb, 
+                            object1[element][10 + (13 * (x - 1))], 
+                            object1[element][11 + (13 * (x - 1))])
+                    }
+                    if (object1[element][9 + (13 * (x - 1))] == 1){
+                        draw(object1[element][0 + (13 * (x - 1))], 
+                            object1[element][1 + (13 * (x - 1))], 
+                            object1[element][2 + (13 * (x - 1))], 
+                            object1[element][3 + (13 * (x - 1))], 
+                            object1[element][4 + (13 * (x - 1))], 
+                            object1[element][5 + (13 * (x - 1))], 
+                            object1[element][6 + (13 * (x - 1))], 
+                            object1[element][7 + (13 * (x - 1))], 
+                            object1[element][8 + (13 * (x - 1))], 
+                            rgb, 
+                            object1[element][10 + (13 * (x - 1))], 
+                            object1[element][11 + (13 * (x - 1))])
+                    }
+                    if (object1[element][9 + (13 * (x - 1))] == 6 && RotationCamera >= 35){
+                        draw(object1[element][0 + (13 * (x - 1))], 
+                            object1[element][1 + (13 * (x - 1))], 
+                            object1[element][2 + (13 * (x - 1))], 
+                            object1[element][3 + (13 * (x - 1))], 
+                            object1[element][4 + (13 * (x - 1))], 
+                            object1[element][5 + (13 * (x - 1))], 
+                            object1[element][6 + (13 * (x - 1))], 
+                            object1[element][7 + (13 * (x - 1))], 
+                            object1[element][8 + (13 * (x - 1))], 
+                            rgb, 
+                            object1[element][10 + (13 * (x - 1))], 
+                            object1[element][11 + (13 * (x - 1))])
+                    }
                 } else {
-                    rgb = hexColor
-                }
-            }
-            if (document.getElementById("speedrender").checked) {
-                if (object1[0][9 + (13 * (x - 1))] == 5 && YCamera >= 35){
-                    draw(object1[0][0 + (13 * (x - 1))], 
-                        object1[0][1 + (13 * (x - 1))], 
-                        object1[0][2 + (13 * (x - 1))], 
-                        object1[0][3 + (13 * (x - 1))], 
-                        object1[0][4 + (13 * (x - 1))], 
-                        object1[0][5 + (13 * (x - 1))], 
-                        object1[0][6 + (13 * (x - 1))], 
-                        object1[0][7 + (13 * (x - 1))], 
-                        object1[0][8 + (13 * (x - 1))], 
+                    draw(object1[element][0 + (13 * (x - 1))], 
+                        object1[element][1 + (13 * (x - 1))], 
+                        object1[element][2 + (13 * (x - 1))], 
+                        object1[element][3 + (13 * (x - 1))], 
+                        object1[element][4 + (13 * (x - 1))], 
+                        object1[element][5 + (13 * (x - 1))], 
+                        object1[element][6 + (13 * (x - 1))], 
+                        object1[element][7 + (13 * (x - 1))], 
+                        object1[element][8 + (13 * (x - 1))], 
                         rgb, 
-                        object1[0][10 + (13 * (x - 1))], 
-                        object1[0][11 + (13 * (x - 1))])
+                        object1[element][10 + (13 * (x - 1))], 
+                        object1[element][11 + (13 * (x - 1))])
                 }
-                if (object1[0][9 + (13 * (x - 1))] == 3 && YCamera <= -35){
-                    draw(object1[0][0 + (13 * (x - 1))], 
-                        object1[0][1 + (13 * (x - 1))], 
-                        object1[0][2 + (13 * (x - 1))], 
-                        object1[0][3 + (13 * (x - 1))], 
-                        object1[0][4 + (13 * (x - 1))], 
-                        object1[0][5 + (13 * (x - 1))], 
-                        object1[0][6 + (13 * (x - 1))], 
-                        object1[0][7 + (13 * (x - 1))], 
-                        object1[0][8 + (13 * (x - 1))], 
-                        rgb, 
-                        object1[0][10 + (13 * (x - 1))], 
-                        object1[0][11 + (13 * (x - 1))])
-                }
-                if (object1[0][9 + (13 * (x - 1))] == 4 && XCamera <= -35){
-                    draw(object1[0][0 + (13 * (x - 1))], 
-                        object1[0][1 + (13 * (x - 1))], 
-                        object1[0][2 + (13 * (x - 1))], 
-                        object1[0][3 + (13 * (x - 1))], 
-                        object1[0][4 + (13 * (x - 1))], 
-                        object1[0][5 + (13 * (x - 1))], 
-                        object1[0][6 + (13 * (x - 1))], 
-                        object1[0][7 + (13 * (x - 1))], 
-                        object1[0][8 + (13 * (x - 1))], 
-                        rgb, 
-                        object1[0][10 + (13 * (x - 1))], 
-                        object1[0][11 + (13 * (x - 1))])
-                }
-                if (object1[0][9 + (13 * (x - 1))] == 2 && XCamera >= 35){
-                    draw(object1[0][0 + (13 * (x - 1))], 
-                        object1[0][1 + (13 * (x - 1))], 
-                        object1[0][2 + (13 * (x - 1))], 
-                        object1[0][3 + (13 * (x - 1))], 
-                        object1[0][4 + (13 * (x - 1))], 
-                        object1[0][5 + (13 * (x - 1))], 
-                        object1[0][6 + (13 * (x - 1))], 
-                        object1[0][7 + (13 * (x - 1))], 
-                        object1[0][8 + (13 * (x - 1))], 
-                        rgb, 
-                        object1[0][10 + (13 * (x - 1))], 
-                        object1[0][11 + (13 * (x - 1))])
-                }
-                if (object1[0][9 + (13 * (x - 1))] == 1){
-                    draw(object1[0][0 + (13 * (x - 1))], 
-                        object1[0][1 + (13 * (x - 1))], 
-                        object1[0][2 + (13 * (x - 1))], 
-                        object1[0][3 + (13 * (x - 1))], 
-                        object1[0][4 + (13 * (x - 1))], 
-                        object1[0][5 + (13 * (x - 1))], 
-                        object1[0][6 + (13 * (x - 1))], 
-                        object1[0][7 + (13 * (x - 1))], 
-                        object1[0][8 + (13 * (x - 1))], 
-                        rgb, 
-                        object1[0][10 + (13 * (x - 1))], 
-                        object1[0][11 + (13 * (x - 1))])
-                }
-                if (object1[0][9 + (13 * (x - 1))] == 6 && RotationCamera >= 35){
-                    draw(object1[0][0 + (13 * (x - 1))], 
-                        object1[0][1 + (13 * (x - 1))], 
-                        object1[0][2 + (13 * (x - 1))], 
-                        object1[0][3 + (13 * (x - 1))], 
-                        object1[0][4 + (13 * (x - 1))], 
-                        object1[0][5 + (13 * (x - 1))], 
-                        object1[0][6 + (13 * (x - 1))], 
-                        object1[0][7 + (13 * (x - 1))], 
-                        object1[0][8 + (13 * (x - 1))], 
-                        rgb, 
-                        object1[0][10 + (13 * (x - 1))], 
-                        object1[0][11 + (13 * (x - 1))])
-                }
-            } else {
-                draw(object1[0][0 + (13 * (x - 1))], 
-                    object1[0][1 + (13 * (x - 1))], 
-                    object1[0][2 + (13 * (x - 1))], 
-                    object1[0][3 + (13 * (x - 1))], 
-                    object1[0][4 + (13 * (x - 1))], 
-                    object1[0][5 + (13 * (x - 1))], 
-                    object1[0][6 + (13 * (x - 1))], 
-                    object1[0][7 + (13 * (x - 1))], 
-                    object1[0][8 + (13 * (x - 1))], 
-                    rgb, 
-                    object1[0][10 + (13 * (x - 1))], 
-                    object1[0][11 + (13 * (x - 1))])
             }
         }
     }
