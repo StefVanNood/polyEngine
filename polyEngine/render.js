@@ -147,7 +147,9 @@ function compile(rgb)
                         object1[0][6 + (13 * (x - 1))], 
                         object1[0][7 + (13 * (x - 1))], 
                         object1[0][8 + (13 * (x - 1))], 
-                        rgb, object1[0][10 + (13 * (x - 1))], object1[0][11 + (13 * (x - 1))])
+                        rgb, 
+                        object1[0][10 + (13 * (x - 1))], 
+                        object1[0][11 + (13 * (x - 1))])
                 }
                 if (object1[0][9 + (13 * (x - 1))] == 3 && YCamera <= -35){
                     draw(object1[0][0 + (13 * (x - 1))], 
@@ -159,7 +161,9 @@ function compile(rgb)
                         object1[0][6 + (13 * (x - 1))], 
                         object1[0][7 + (13 * (x - 1))], 
                         object1[0][8 + (13 * (x - 1))], 
-                        rgb, object1[0][10 + (13 * (x - 1))], object1[0][11 + (13 * (x - 1))])
+                        rgb, 
+                        object1[0][10 + (13 * (x - 1))], 
+                        object1[0][11 + (13 * (x - 1))])
                 }
                 if (object1[0][9 + (13 * (x - 1))] == 4 && XCamera <= -35){
                     draw(object1[0][0 + (13 * (x - 1))], 
@@ -171,7 +175,9 @@ function compile(rgb)
                         object1[0][6 + (13 * (x - 1))], 
                         object1[0][7 + (13 * (x - 1))], 
                         object1[0][8 + (13 * (x - 1))], 
-                        rgb, object1[0][10 + (13 * (x - 1))], object1[0][11 + (13 * (x - 1))])
+                        rgb, 
+                        object1[0][10 + (13 * (x - 1))], 
+                        object1[0][11 + (13 * (x - 1))])
                 }
                 if (object1[0][9 + (13 * (x - 1))] == 2 && XCamera >= 35){
                     draw(object1[0][0 + (13 * (x - 1))], 
@@ -183,7 +189,9 @@ function compile(rgb)
                         object1[0][6 + (13 * (x - 1))], 
                         object1[0][7 + (13 * (x - 1))], 
                         object1[0][8 + (13 * (x - 1))], 
-                        rgb, object1[0][10 + (13 * (x - 1))], object1[0][11 + (13 * (x - 1))])
+                        rgb, 
+                        object1[0][10 + (13 * (x - 1))], 
+                        object1[0][11 + (13 * (x - 1))])
                 }
                 if (object1[0][9 + (13 * (x - 1))] == 1){
                     draw(object1[0][0 + (13 * (x - 1))], 
@@ -195,7 +203,9 @@ function compile(rgb)
                         object1[0][6 + (13 * (x - 1))], 
                         object1[0][7 + (13 * (x - 1))], 
                         object1[0][8 + (13 * (x - 1))], 
-                        rgb, object1[0][10 + (13 * (x - 1))], object1[0][11 + (13 * (x - 1))])
+                        rgb, 
+                        object1[0][10 + (13 * (x - 1))], 
+                        object1[0][11 + (13 * (x - 1))])
                 }
                 if (object1[0][9 + (13 * (x - 1))] == 6 && RotationCamera >= 35){
                     draw(object1[0][0 + (13 * (x - 1))], 
@@ -207,7 +217,9 @@ function compile(rgb)
                         object1[0][6 + (13 * (x - 1))], 
                         object1[0][7 + (13 * (x - 1))], 
                         object1[0][8 + (13 * (x - 1))], 
-                        rgb, object1[0][10 + (13 * (x - 1))], object1[0][11 + (13 * (x - 1))])
+                        rgb, 
+                        object1[0][10 + (13 * (x - 1))], 
+                        object1[0][11 + (13 * (x - 1))])
                 }
             } else {
                 draw(object1[0][0 + (13 * (x - 1))], 
@@ -219,7 +231,9 @@ function compile(rgb)
                     object1[0][6 + (13 * (x - 1))], 
                     object1[0][7 + (13 * (x - 1))], 
                     object1[0][8 + (13 * (x - 1))], 
-                    rgb, object1[0][10 + (13 * (x - 1))], object1[0][11 + (13 * (x - 1))])
+                    rgb, 
+                    object1[0][10 + (13 * (x - 1))], 
+                    object1[0][11 + (13 * (x - 1))])
             }
         }
     }
