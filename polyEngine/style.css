@@ -3,9 +3,9 @@ body {
 }
 .game {
     background-color: white;
-    position: relative;
+    position: fixed;
     left: 25%;
-    top: -200px;
+    top: 40px;
 }
 .widget1 {
     background-color: rgb(112, 112, 112);

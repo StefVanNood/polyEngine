@@ -4,7 +4,7 @@ var colorInput = document.querySelector("#color")
 var XCamera = 0
 var YCamera = 0
 var RotationCamera = 0
-var speed = 5
+var vel = 1
 
 var row = ""
 var object1 = []
@@ -30,32 +30,68 @@ colorInput.addEventListener('input', () => {
 document.onkeydown = move;
 function move(event) {
     event = event || window.event;
-    if (event.keyCode == 37) {
-        XCamera = XCamera - speed
-        console.log(XCamera)
-        build()
-    } else if (event.keyCode == 39) {
-        XCamera = XCamera + speed
-        console.log(XCamera)
-        build()
-    } else if (event.keyCode == 38) {
-        YCamera = YCamera - speed
-        console.log(YCamera)
-        build()
-    } else if (event.keyCode == 40) {
-        YCamera = YCamera + speed
-        console.log(YCamera)
-        build()
+    switch(event.keyCode){
+        case 37:
+            moveLeft()
+        break;
+        case 39:
+            moveRight()
+        break;
+        case 38:
+            moveUp()
+        break;
+        case 40:
+            moveDown()
+        break;
     }
+}
+document.onkeyup = stopMove;
+function stopMove(event) {
+    vel = 1
+}
+
+function moveUp() {
+    for(var start = 1; start < 100; start++) {
+        setTimeout(function () {
+            YCamera = YCamera - (vel / 100)
+            build()
+            start++
+        }, 10);
+    }
+    vel += 1
+}
+function moveDown() {
+    for(var start = 1; start < 100; start++) {
+        setTimeout(function () {
+            YCamera = YCamera + (vel / 100)
+            build()
+            start++
+        }, 10);
+    }
+    vel += 1
+}
+function moveRight() {
+    for(var start = 1; start < 100; start++) {
+        setTimeout(function () {
+            XCamera = XCamera + (vel / 100)
+            build()
+            start++
+        }, 10);
+    }
+    vel += 1
+}
+function moveLeft() {
+    for(var start = 1; start < 100; start++) {
+        setTimeout(function () {
+            XCamera = XCamera - (vel / 100)
+            build()
+            start++
+        }, 10);
+    }
+    vel += 1
 }
 
 function build(){
-    var light = document.getElementById("lightBulb");
-    if (XCamera < -30) {
-        light.style.marginLeft = (80 + XCamera) + "px";
-    } else {
-        light.style.marginLeft = (80 + -30) + "px";
-    }
     xPos1 = document.getElementById("xPos")
     yPos1 = document.getElementById("yPos")
     if (xPos1.value == "") {
