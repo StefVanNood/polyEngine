@@ -47,6 +47,12 @@ function move(event) {
 }
 document.onkeyup = stopMove;
 function stopMove(event) {
+    for(var start = 1; start < vel; start++) {
+        setTimeout(function () {
+            vel = vel - 1
+            start++
+        }, 10);
+    }
     vel = 1
 }
 
