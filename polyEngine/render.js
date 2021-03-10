@@ -13,8 +13,10 @@ function readFile(){
     let reader = new FileReader();
     reader.addEventListener('load', function(e) {
             let text = e.target.result;
-            output = document.querySelector("#liveOutput")
-            output.innerHTML = text
+            filesOut = document.querySelector("#liveOutput")
+            filesOut.innerHTML = "file name: " + file.name + 
+                                "<br />file size: " + file.size + " bytes" + 
+                                "<br />file type: " + file.type
             row = text
             row = row.split(" ")
             object1 = []
